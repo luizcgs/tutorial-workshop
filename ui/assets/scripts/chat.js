@@ -75,7 +75,15 @@ function newMessage(e) {
 		};
 
 // Paste Save New Message code below //
-
+WeDeploy
+  .data(address.data)
+  .auth(WeDeploy.auth(address.auth).currentUser)
+  .create('messages', data)
+  .then(function(response) {
+    input.value = '';
+    conversation.scrollTop = conversation.scrollHeight;
+    appendMessage(data);
+  });
 // Paste Save New Message code above //
 	}
 
@@ -120,5 +128,19 @@ function animateMessage(message) {
  */
 
 // Paste Watch New Messages code below //
-
+WeDeploy
+  .data(address.data)
+  .auth(WeDeploy.auth(address.auth).currentUser)
+  .orderBy('id', 'desc')
+  .limit(1)
+  .watch('messages')
+  .on('changes', function(result) {
+    var data = result.pop();
+    var element = document.getElementById(data.id);
+    if (element) {
+      animateMessage(element);
+    } else {
+      appendMessage(data);
+    }
+  });
 // Paste Watch New Messages code above //
