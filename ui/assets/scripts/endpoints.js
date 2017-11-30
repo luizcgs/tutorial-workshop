@@ -7,6 +7,6 @@ const address = {
 	"auth": "auth-luizls2017.wedeploy.io",
 // Paste Auth Endpoint above //
 // Paste Data Endpoint above //
-	"data": ""
+	"data": "data-luizls2017.wedeploy.io"
 // Paste Data Endpoint above //
 }
